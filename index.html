@@ -11,8 +11,8 @@
 
 </head>
 
-<body>
-<div id="exercise">
+<body >
+<div id="exercise" v-on:mousemove="getMouseCoordinates">
   <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
   <p>VueJS is pretty cool - {{name}} ({{age}})</p>
   <!-- 2) Output your age, multiplied by 3 -->
@@ -27,26 +27,27 @@
   <div>
     <input type="text" v-model="name">
   </div>
+
+  <div>
+    <button v-on:click="increment">Click me</button>
+    <p>{{counter}}</p>
+  </div>
+  <p>Coordinates : x:{{x}} y:{{y}} - <span v-on:mousemove.stop.prevent="">DEAD SPOT with event modifiers (stopPropagation and preventDefault)</span></p>
+
+
+  <div>
+    <button v-on:click="displayAlert('I am an alert dialog box')">Show Alert</button>
+  </div>
+
+
+  <div>
+    <input type="text" v-on:keydown.enter="inputValue = $event.target.value"/>
+    <p>{{inputValue}}</p>
+  </div>
+
+
 </div>
-
-<script type="application/javascript">
-  new Vue({
-    el: '#exercise',
-    data: {
-      name: 'Kevin',
-      age: 20, // yep, lets say I am 20 again.
-      imageLink: 'https://upload.wikimedia.org/wikipedia/en/c/c8/Marvelwolverine.jpg',
-    },
-    methods: {
-      multiplyAgeBy: function(factor) {
-        return this.age * factor;
-      },
-      generateRandomNum: function(base, top) {
-        return Math.floor((Math.random() * top) + base);
-
-      }
-    }
-  });
+<script type="application/javascript" src="./script.js">
 
 </script>
 </body>
