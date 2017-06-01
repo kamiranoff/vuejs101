@@ -7,16 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Place favicon.ico in the root directory -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 </head>
+
 <body>
-<section>
-  <header>
-    <h1>Vue.js 101</h1>
-  </header>
-</section>
-<!-- Add your site or application content here -->
+<div id="exercise">
+  <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+  <p>VueJS is pretty cool - {{name}} ({{age}})</p>
+  <!-- 2) Output your age, multiplied by 3 -->
+  <p>{{ multiplyAgeBy(3) }}</p>
+  <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+  <p>{{ generateRandomNum(1, 100) }}</p>
+  <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+  <div>
+    <img style="width:100px;height:100px" v-bind:src="imageLink">
+  </div>
+  <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+  <div>
+    <input type="text" v-model="name">
+  </div>
+</div>
 
+<script type="application/javascript">
+  new Vue({
+    el: '#exercise',
+    data: {
+      name: 'Kevin',
+      age: 20, // yep, lets say I am 20 again.
+      imageLink: 'https://upload.wikimedia.org/wikipedia/en/c/c8/Marvelwolverine.jpg',
+    },
+    methods: {
+      multiplyAgeBy: function(factor) {
+        return this.age * factor;
+      },
+      generateRandomNum: function(base, top) {
+        return Math.floor((Math.random() * top) + base);
 
+      }
+    }
+  });
+
+</script>
 </body>
 </html>
